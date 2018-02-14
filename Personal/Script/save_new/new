@@ -1,0 +1,11 @@
+[01;31m		 >> News Archlinux.fr << [00m
+ - Fin du support i686 - [1;34mWed, 08 Nov 2017 [00m
+ - Changement de chemin de la bibliothèque Perl - [1;34mSat, 02 Sep 2017 [00m
+ - Dépréciation de l'outil ABS et point final à rsync - [1;34mMon, 15 May 2017 [00m
+ - La mise à jour vers ca-certificates-utils 20170307-1 demande une intervention manuelle - [1;34mThu, 16 Mar 2017 [00m
+ - Mesa avec le support de libglvnd est maintenant dans [testing] - [1;34mWed, 01 Mar 2017 [00m
+ - Suppression progressive du support i686 - [1;34mWed, 25 Jan 2017 [00m
+ - xorg-server 1.19.1 est à présent dans extra - [1;34mSun, 15 Jan 2017 [00m
+ - La mise à jour d'OpenVPN 2.4.0 requiert une intervention administrateur - [1;34mFri, 30 Dec 2016 [00m
+ - ttf-dejavu 2.37 nécessitera de forcer la mise à jour - [1;34mMon, 31 Oct 2016 [00m
+ - Les paquets TeXLive 2016 sont maintenant disponibles - [1;34mSat, 06 Aug 2016 [00m
