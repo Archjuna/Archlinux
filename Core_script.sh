@@ -47,9 +47,12 @@ ft_checkInstall()
 ft_install()
 {
 #Verification de la presence du paquet
+
 	package=$1
 	ft_checkInstall $package test1
+
 #installation du paquet avec packer
+
 	if pacman -Qi packer &> /dev/null; then
 		packer -S --noconfirm --noedit  $package
 	fi

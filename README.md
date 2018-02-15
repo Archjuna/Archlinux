@@ -14,5 +14,6 @@ Entrer la commande suivante :
 
 ### Reste à faire
 - [ ] Changer les liens des répertoires.
+- [ ] Demander à l'utilisateur si il veut autre chose.
 - [ ] Ajouter cron.
 - [X] Ajouter les raccourcis.
