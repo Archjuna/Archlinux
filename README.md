@@ -3,7 +3,7 @@
 
 Script pour automatiser l'installation de thèmes et de paquets sous Archlinux.
 
-À utiliser après l'installation de l'environnement.
+À utiliser après l'installation de l'environnement XFCE4.
 
 ### Usage :
 
@@ -16,4 +16,5 @@ Entrer la commande suivante :
 - [ ] Changer les liens des répertoires.
 - [ ] Demander à l'utilisateur si il veut autre chose.
 - [ ] Ajouter cron.
+- [X] Supprimer la demande de root.
 - [X] Ajouter les raccourcis.
