@@ -16,5 +16,8 @@ Entrer la commande suivante :
 - [ ] Changer les liens des répertoires.
 - [ ] Demander à l'utilisateur si il veut autre chose.
 - [ ] Ajouter cron.
+- [ ] Ajouter le fond d'écran.
+- [ ] Clavier.
+- [ ] Installer ZSH.
 - [X] Supprimer la demande de root.
 - [X] Ajouter les raccourcis.
