@@ -11,13 +11,6 @@
 #* ****************************************  ****************  ************** *#
 #* ************************************************************************** *#
 
-#Control du root
-
-if [ $EUID != 0 ]; then
-  echo "erreur : vous ne pouvez pas effectuer cette opération à moins d’être root."
-  exit 1
-fi
-
 #******************************  Variables  ***********************************#
 
 ide=intellij-idea-ultimate-edition
@@ -31,7 +24,7 @@ tweeter=corebird
 ft_checkInstall()
 {
 	if pacman -Qi $1 &> /dev/null;then
-		echo -e "\033[32mOK\033[0m "$1" est bien installé !"
+		echo -e "\033[32mOK\033[0m "$1" est bien installé !\n"
 	else
 		if [ $2 = test2 ];then
 			echo -e "\033[31;7mAttention :\033[0m Des erreurs ont été rencontrée.\n"
@@ -61,7 +54,7 @@ ft_install()
 
 ft_dependency()
 {
-for package in clang discord-canary
+for package in cmake clang discord-canary
 do
 	ft_install $package
 done
@@ -135,7 +128,7 @@ echo "Dans cette section le script installera Packer (pour les paquets AUR) "
 ft_checkInstallPacker()
 {
 	if pacman -Qi $1 &> /dev/null;then
-		echo -e "\033[32mOK\033[0m Packer est bien installé !"
+		echo -e "\033[32mOK\033[0m Packer est bien installé !\n"
 	else
 		if [ $2 = "test2" ];then
 			echo -e "\033[31;7mAttention :\033[0m Des erreurs ont été rencontrée.\n"
@@ -259,7 +252,7 @@ echo -e "Dans cette section le script vous demandera confirmation pour installer
 
 for package in $ide $navigateur $discord $tweeter
 do
-	read -p "Voulez-vous installer $package ? oui/non" answer
+	read -p "Voulez-vous installer $package ? oui/non : " answer
 	if [ $answer = oui ];then
 		if [ $package = discord-canary ];then
 			ft_dependency
