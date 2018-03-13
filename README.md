@@ -12,6 +12,8 @@ Ouvrir un terminal dans le répertoire ou se trouve le dossier cloné
 Entrer la commande suivante :
 `./Core_script.sh`
 
+Il ne reste plus qu'à configurer le systeme avec le gestionnaire de paramètre sous XFCE4.
+
 ### Reste à faire
 - [ ] Changer les liens des répertoires.
 - [ ] Demander à l'utilisateur si il veut autre chose.
@@ -19,5 +21,7 @@ Entrer la commande suivante :
 - [ ] Ajouter le fond d'écran.
 - [ ] Clavier.
 - [ ] Installer ZSH.
+- [ ] "Terminal conky".
+- [ ] Éditer le zim pour la configuration.
 - [X] Supprimer la demande de root.
 - [X] Ajouter les raccourcis.

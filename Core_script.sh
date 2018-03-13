@@ -54,6 +54,7 @@ ft_install()
 
 ft_dependency()
 {
+gpg --keyserver pgp.mit.edu --recv-keys 8F0871F202119294
 for package in cmake clang discord-canary
 do
 	ft_install $package
