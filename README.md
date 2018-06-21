@@ -22,6 +22,7 @@ Il ne reste plus qu'à configurer le systeme avec le gestionnaire de paramètre 
 - [ ] Clavier.
 - [ ] Installer ZSH.
 - [ ] "Terminal conky".
+- [ ] Changer pamac par aurman.
 - [ ] Éditer le zim pour la configuration.
 - [X] Supprimer la demande de root.
 - [X] Ajouter les raccourcis.
