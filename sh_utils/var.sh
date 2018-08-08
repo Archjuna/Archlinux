@@ -10,35 +10,25 @@
 #* *****************************************  **************  *************** *#
 #* ****************************************  ****************  ************** *#
 #* ************************************************************************** *#
+# Animation
 
-NB_ROWS=`tput cols`
-CALCUL_ROWS=$(($NB_ROWS-4))
-TO_RIGHT="\033["$CALCUL_ROWS"C"
 ANIMATION=("|]" /] -] "\]")
 
+# Position 
+NB_ROWS=`tput cols`
+MIDDLE_ROWS=$(($NB_ROWS/2))
+NB_CARACT=`echo "oo" | wc -c`
+CALCUL_ROWS=$(($NB_ROWS-$NB_CARACT-1))
+TO_RIGHT="\033["$CALCUL_ROWS"C"
+TO_RIGHT_ERR="\033["$(($CALCUL_ROWS-3))"C"
 
-count(){
-  wait &
-  pid=$!
+# Colors
 
-  for i in `seq 1 5`
-  do
-    sleep 1;
-  done
-
-  kill $pid
-}
-
-function wait(){
-  while [ 1 ]
-  do
-    for i in ${ANIMATION[@]};
-    do
-      echo -ne "\r$TO_RIGHT [$i";
-      sleep 0.2;
-    done;
-  done
-}
-
-echo -n "TEST"
-count
+ESC_SEQ="\x1b["
+COL_RESET=$ESC_SEQ"39;49;00m"
+COL_RED=$ESC_SEQ"31;01m"
+COL_GREEN=$ESC_SEQ"32;01m"
+COL_YELLOW=$ESC_SEQ"33;01m"
+COL_BLUE=$ESC_SEQ"34;01m"
+COL_MAGENTA=$ESC_SEQ"35;01m"
+COL_CYAN=$ESC_SEQ"36;01m"

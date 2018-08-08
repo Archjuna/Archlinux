@@ -1,4 +1,4 @@
-#!/bin/bash 
+#!/bin/bash
 #* ************************************************************************** *#
 #* ************************************************    ********************** *#
 #* **  by: Archjuna  *****************************  **  ********************* *#
@@ -10,41 +10,26 @@
 #* *****************************************  **************  *************** *#
 #* ****************************************  ****************  ************** *#
 #* ************************************************************************** *#
-source ./var.sh
-function banner() 
-{
-	line $1
-    	echo -e "\r$IN_MIDDLE$COL_GREEN $1$COL_RESET "
+
+function lance(){
+  loading &
+  pid=$!
+
+  for i in `seq 1 5`
+  do
+    sleep 1
+  done
+  kill $pid >/dev/null 2>&1
+  wait $pid 2>/dev/null
 }
 
-function speak()
-{
-	line
-	echo -e "\n\n $1\n"
-	line
-}
-
-function action()
-{
-	echo -ne "$COL_YELLOW==> $1...$COL_RESET"
-}
-
-function ask()
-{
-	line
-	echo -e "\n"
-	read -p $'\e[34m'"$1 "$'\e[0m' answer
-}
-
-
-function ok() 
-{
-	calculate_position "ok"
-	echo -e "\r$TO_RIGHT$COL_GREEN[ok]$COL_RESET"
-}
-
-function error() 
-{
-	calculate_position "error"
-	echo -e "\r$TO_RIGHT$COL_RED[error]$COL_RESET" 
+function loading(){
+	while [ 1 ] 
+  do
+    for i in ${ANIMATION[@]};
+    do
+      echo -ne "\r$TO_RIGHT [$i";
+      sleep 0.2;
+    done;
+  done
 }
