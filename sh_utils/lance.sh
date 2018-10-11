@@ -15,6 +15,9 @@ source ./speak.sh
 source ./var.sh
 source ./loader.sh
 
-lance
-ok
-line 
+action copy
+loading & 
+pid=$!
+sleep 5
+kill $pid >/dev/null 2>&1 && wait $pid 2>/dev/null
+line

@@ -1,0 +1,132 @@
+Configuration du systeme
+
+-- Makepkg --
+
+changer le fstab :
+tmpfs   /tmp         tmpfs   rw,nodev,nosuid,noexec          0  0
+
+# Changer les Cflags
+CFLAGS="-march=native -O2 -pipe -fstack-protector-strong -fno-plt"
+CXXFLAGS="${CFLAGS}"
+
+# Installer ccache
+# Décommenter ccache 
+BUILDENV=(fakeroot !distcc color ccache check !sign)
+
+# Ajouter cette variable au .zshrc
+export PATH="/usr/lib/ccache/bin/:$PATH"
+
+# utiliser plusieurs coeurs
+MAKEFLAGS="-j$(( $(nproc) + 1 ))"
+
+# Compiler dans tmp
+BUILDDIR=/tmp/makepkg
+
+# Utiliser tous les coeur pour la compression
+COMPRESSXZ=(xz -c -z - --threads=0)
+#installer pigz avant
+COMPRESSGZ=(pigz -c -f -n)
+
+# On change curl pour Aria2
+
+DLAGENTS=('ftp::/usr/bin/aria2c %u -o %o --continue --max-connection-per-server=16 --min-split-size=1M --split=16'
+      'http::/usr/bin/aria2c %u -o %o --continue --max-connection-per-server=16 --min-split-size=1M --split=16'
+      'https::/usr/bin/aria2c %u -o %o --continue --max-connection-per-server=16 --min-split-size=1M --split=16'
+      'rsync::/usr/bin/rsync --no-motd -z %u %o'
+      'scp::/usr/bin/scp -C %u %o')
+
+-- Ccache --
+
+# On change le dossier pour le mettre en ram
+vim /home/user/.ccache/ccache.conf
+cache_dir = /tmp/ccache
+
+
+-- Pacman --
+
+#Supprimer tout les paquets orphelins
+pacman -Rns $(pacman -Qtdq)
+
+#Nettoie le cache
+pacman -Sc
+
+#Met à jour les clé d'Arch
+sudo pacman-key --refresh-keys
+
+
+#ajouter a /etc/pacman.conf sous [option]
+
+#Empeche les locals
+NoExtract = usr/share/locale/[a-z]*/*
+NoExtract = !usr/share/locale/fr/*
+NoExtract = !usr/share/locale/fr_FR/*
+
+#Pour avoir l'animation
+ILoveCandy
+
+# Pour augmenter la vitesse de téléchargement avec aria2
+#installer aria2 avant
+XferCommand = /usr/bin/aria2c --allow-overwrite=true --continue=true --file-allocation=none --log-level=error --max-tries=2 --max-connection-per-server=2 --max-file-not-found=5 --min-split-size=5M --no-conf --remote-time=true --summary-interval=60 --timeout=5 --dir=/ --out %o %u
+#changer le nivo des signature
+SigLevel    = Required DatabaseNever
+
+-- Firefox --
+
+about:config
+
+Change Performance settings
+
+dom.ipc.processCount valeur 7
+browser.preferences.defaultPerformanceSettings.enabled  false
+
+Enable OpenGL Off-Main-Thread Compositing (OMTC)
+about:support
+Under the "Graphics" section look for "Compositing". If it reports "Basic", OpenGL OMTC is disabled; if it reports "OpenGL" it is enabled. 
+about:config
+layers.acceleration.force-enabled  true
+
+Stop urlclassifier3.sqlite from being created again
+$ cd ~/.mozilla/firefox/<profile_dir>
+$ echo "" > urlclassifier3.sqlite
+$ chmod 400 urlclassifier3.sqlite
+
+Turn off the disk cache
+about:config
+Set browser.cache.disk.enable to false
+browser.cache.memory.enable to true
+
+No information record
+browser.sessionstore.resume_from_crash to false
+
+#installer profile-cleaner pour les base de données de firefox
+
+#disable pocket
+extensions.pocket.enabled to false
+
+mettre le profile en RAM
+installer profile-sync-daemon
+
+-- lightdm --
+
+#Installer le theme
+aurman -S lightdm-webkit2-theme-material2
+
+#changer les parametre de lightdm
+[greeter]
+  webkit_theme        = material2
+
+background_images= /var/lib/AccountsService/
+
+-- Aurman --
+
+# On met le cache en /tmp
+vim .config/aurman/aurman_config
+[miscellaneous]
+cache_dir=/tmp
+
+-- Lock --
+# Install light-locker
+sudo pacman -S light-locker
+
+# On le definit dans xfce
+xfconf-query -c xfce4-session -p /general/LockCommand -s "light-locker-command -l" --create -t string

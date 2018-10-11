@@ -91,7 +91,7 @@ sudo pacman -S --noconfirm --needed simplescreenrecorder sysstat 2>> erreur.log
 sudo pacman -S --noconfirm --needed thunar tumbler 2>> erreur.log
 sudo pacman -S --noconfirm --needed vlc vnstat wget unclutter 2>> erreur.log
 ft_checkError erreur.log
-
+# recuperer la config de redshift
 #Gestion des erreurs
 
 ft_checkError()

@@ -1,0 +1,24 @@
+-- Mise à jour du System --
+
+Utiliser powerpill  
+https://wiki.archlinux.org/index.php/Powerpill
+repo powerpill
+[xyne-any]
+# A repo for Xyne's own projects: https://xyne.archlinux.ca/projects/
+# Packages for "any" architecture.
+# Use this repo only if there is no matching [xyne-*] repo for your architecture.
+SigLevel = Required
+Server = https://xyne.archlinux.ca/repos/xyne
+
+utiliser aurman pour les AUR
+
+
+installer les pacman contrib
+
+
+installer rofi
+icon
+https://github.com/pop-os/icon-theme
+
+theme
+https://github.com/mantissa-/mantis-theme

@@ -1,0 +1,23 @@
+rofi.modi:                           window,drun,run
+rofi.sidebar-mode:                   true
+rofi.width:                          40
+rofi.lines:                          7
+rofi.font:                           hack 20 
+rofi.bw:                             20
+rofi.location:                       0
+rofi.padding:                        30
+rofi.levenshtein-sort:               true
+rofi.case-sensitive:                 false
+rofi.fuzzy:                          false
+rofi.line-margin:                    10
+rofi.separator-style:                solid
+rofi.hide-scrollbar:                 true
+rofi.markup-rows:                    false
+rofi.scrollbar-width: 0
+rofi.color-enabled: true
+! State:           'bg',     'fg',     'bgalt',  'hlbg',   'hlfg'
+rofi.color-normal: #2b2725,  #e7e8eb,  #2b2725,  #e7e8eb,  #2f343f
+rofi.color-urgent: #fdf6e3,  #dc322f,  #eee8d5,  #dc322f,  #fdf6e3
+rofi.color-active: #fdf6e3,  #268bd2,  #eee8d5,  #268bd2,  #fdf6e3
+!                  'background', 'border'
+rofi.color-window: #574f4a,      #574f4a40

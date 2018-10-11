@@ -47,10 +47,10 @@ loadkeys fr
 #									partitionement                             #
 #------------------------------------------------------------------------------#
 
-read -p "voulez-vous utiliser le swapp ? non par defaut" answer
+read -p "voulez-vous utiliser le swap ? non par defaut" answer
 case "$answer" in
-	"o|O") SWAPP=OUI;;
-	*) SWAPP=NON;;
+	"o|O") SWAP=OUI;;
+	*) SWAP=NON;;
 esac
 
 echo "Veuillez effectuer ces commandes, afin de partitionner votre disque; \nLancer l'utilitaire cgdisk et supprimer toutes les partitions \n Ensuite : \n New => 512M => EF00 \n Si vous souhaiter utiliser le swapp : New => Taille de la RAM => 8200 \n Sinon New => 20 ou 25G => 8300 \n New => Reste => 8302 \n Write et Quit. \n Voila les partitions sont créées."
@@ -108,13 +108,16 @@ fi
 
 if $PROCESSEUR = "Intel";then
 	pacstrap /mnt intel-ucode
+else
+	pacstrap /mnt amd-ucode
 fi
 #------------------------------------------------------------------------------#
 #									Configuration							   #
 #------------------------------------------------------------------------------#
 genfstab -U -p /mnt >> /mnt/etc/fstab
-arch-chroot /mnt echo NomDeLaMachine > /etc/hostname
-arch-chroot /mnt echo '127.0.1.1 NomDeLaMachine.localdomain NomDeLaMachine' >> /etc/hosts
+ask 'Comment voulez-vous appeler cet ordinateur ?'
+arch-chroot /mnt echo $answer > /etc/hostname
+arch-chroot /mnt echo '127.0.1.1 $answer.localdomain $answer' >> /etc/hosts
 arch-chroot /mnt ln -s /usr/share/zoneinfo/Europe/Paris /etc/localtime
 arch-chroot /mnt sed -i -e 's/#fr_FR.UTF-8 UTF-8/fr_FR.UTF-8 UTF-8/g' /etc/locale.gen
 arch-chroot /mnt locale-gen
@@ -123,14 +126,6 @@ arch-chroot /mnt export LANG=fr_FR.UTF-8
 arch-chroot /mnt echo KEYMAP=fr > /etc/vconsole.conf
 arch-chroot /mnt hwclock --systohc --utc
 arch-chroot /mnt mkinitcpio -p linux
-arch-chroot /mnt echo "[archlinuxfr]" >> /etc/pacman.conf
-arch-chroot /mnt echo "SigLevel = Never" >> /etc/pacman.conf
-arch-chroot /mnt echo "Server = http://repo.archlinux.fr/$arch" >> /etc/pacman.conf
-arch-chroot /mnt pacman -Syy
-arch-chroot /mnt pacman -S yaourt
-arch-chroot /mnt sed -i -e 's/[archlinuxfr]/#[archlinuxfr]/g' /etc/pacman.conf
-arch-chroot /mnt sed -i -e 's/SigLevel = Never/#SigLevel = Never/g' /etc/pacman.conf
-arch-chroot /mnt sed -i -e 's/Server = http://repo.archlinux.fr/$arch/#Server = http://repo.archlinux.fr/$arch/g' /etc/pacman.conf
 
 #------------------------------------------------------------------------------#
 #									Bootloader								   #

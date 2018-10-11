@@ -1,0 +1,41 @@
+== Application ==
+
+Légende :
+
+=  : obligatoire
+-  : optionnelle
+-- : section
+
+
+-- Installateur système --
+			|
+			---> =Base=
+			|		|
+			|		---> -Module-
+			|				|
+			|				---> configuration
+			|							|
+			|							---> Pacman
+			|							|
+			|							---> makepkg
+			|							|
+			|							---> aurman
+			|							|
+			|							---> ccache		
+			|
+			---> =Bootloader=
+			|			|
+			|			--->Grub
+			|
+			---> -Module-
+					|
+					---> Application # installe des applications comme firefox libreoffice ...
+					|
+					---> configuration # configure les applications installées précédemment.
+								|
+								---> firefox
+
+-- Installateur graphique --
+-- Installateur sécurité --
+-- Maintenance --
+
