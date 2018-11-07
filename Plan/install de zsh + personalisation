@@ -47,7 +47,7 @@ mkdir -p ~/.zsh/completion && mkdir hack
 	## Affichage du menu de complétion à partir de deux résultats
 	zstyle ':completion:*' menu select=2
 }
-# On télécharge les plugins sympa (autosuggestion/colorationsyntax)
+# On télécharge les plugins sympas (autosuggestion/colorationsyntax)
 	git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
 	git clone https://github.com/zsh-users/zsh-syntax-highlighting $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 # On télécharge les polices  
