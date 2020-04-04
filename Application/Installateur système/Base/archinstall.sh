@@ -49,8 +49,8 @@ loadkeys fr
 
 read -p "voulez-vous utiliser le swap ? non par defaut" answer
 case "$answer" in
-	"o|O") SWAP=OUI;;
-	*) SWAP=NON;;
+	"o|O") SWAPP=OUI;;
+	*) SWAPP=NON;;
 esac
 
 echo "Veuillez effectuer ces commandes, afin de partitionner votre disque; \nLancer l'utilitaire cgdisk et supprimer toutes les partitions \n Ensuite : \n New => 512M => EF00 \n Si vous souhaiter utiliser le swapp : New => Taille de la RAM => 8200 \n Sinon New => 20 ou 25G => 8300 \n New => Reste => 8302 \n Write et Quit. \n Voila les partitions sont créées."
